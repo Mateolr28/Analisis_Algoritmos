@@ -46,7 +46,8 @@ def main_menu():
                     print("Valor no encontrado")
 
                 print(f"Tiempo ejecución: {end - start:.6f} segundos")
-    
+
+                #Tiempos
                 tiempos = []
 
                 # Mejor caso
@@ -73,7 +74,7 @@ def main_menu():
 
             case "4":
                 n = int(input("Ingrese n: "))
-                valor = int(input("Valor a buscar (entre 1 y n o fuera del rango para el peor caso): "))
+                valor = int(input("Valor a buscar: "))
                 arr = list(range(1, n + 1))
 
                 start = time.time()
@@ -86,35 +87,31 @@ def main_menu():
                     print("Valor no encontrado")
 
                 print(f"Tiempo ejecución: {end - start:.6f} segundos")
-
-                # Comparación con mejor, promedio y peor caso
-                print("\n--- Comparación con otros casos ---")
+                
+                #Tiempos
                 tiempos = []
 
-                # Mejor caso: valor del medio
+                # Mejor caso
                 start = time.time()
                 oper.binarySearch(arr, arr[n // 2])
                 end = time.time()
-                print(f"Mejor caso (valor {arr[n // 2]}): {end - start:.6f} segundos")
                 tiempos.append(end - start)
 
-                # Promedio caso: valor cercano al inicio
+                # Promedio caso
                 start = time.time()
                 oper.binarySearch(arr, arr[n // 4])
                 end = time.time()
-                print(f"Promedio caso (valor {arr[n // 4]}): {end - start:.6f} segundos")
                 tiempos.append(end - start)
 
-                # Peor caso: valor que no existe
+                # Peor caso
                 start = time.time()
                 oper.binarySearch(arr, -1)
                 end = time.time()
-                print(f"Peor caso (valor -1): {end - start:.6f} segundos")
                 tiempos.append(end - start)
 
-                print(f"\nOmín  = {min(tiempos):.6f} s")
-                print(f"Oprom = {sum(tiempos)/len(tiempos):.6f} s")
-                print(f"Omáx  = {max(tiempos):.6f} s")
+                print(f"\nmin  = {min(tiempos):.6f} s")
+                print(f"prom = {sum(tiempos)/len(tiempos):.6f} s")
+                print(f"max  = {max(tiempos):.6f} s")
 
 
             case "s":
