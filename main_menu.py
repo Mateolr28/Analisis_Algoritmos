@@ -1,0 +1,126 @@
+from os import system
+import time
+from operations import Operations
+
+def main_menu():
+    system('cls')  
+    opt = ""
+    oper = Operations()
+    while opt != "s":
+        print("\033[96m-" * 22)
+        print("|| Menú de opciones ||")
+        print("-" * 22 + "\033[97m")
+        print("1. Suma naturales iterativo")
+        print("2. Suma naturales Gauss")
+        print("3. Búsqueda secuencial")
+        print("4. Búsqueda binaria")
+        print("5. Ordenamientos (burbuja, selección e inserción)")
+        print("S. Salir")
+        opt = input("Ingrese su opción: ").lower()
+
+        match opt:
+            case "1":
+                n = int(input("Ingrese n: "))
+                start = time.time()
+                print(f"Suma de 1 a {n} iterativo: {oper.sumNaturalsIterative(n)} ")
+                end = time.time()
+                print(f"Tiempo ejecución: {end - start:.6f} segundos")
+            case "2":
+                n = int(input("Ingrese n: "))
+                start = time.time()
+                print(f"Suma de 1 a {n} Gauss: {oper.sumNaturalsGauss(n)} ")
+                end = time.time()
+                print(f"Tiempo ejecución: {end - start:.6f} segundos")
+            case "3":
+                n = int(input("Ingrese n: "))
+                valor = int(input("Valor a buscar: "))
+                arr = list(range(1, n + 1))
+
+                start = time.time()
+                pos = oper.sequentialSearch(arr, valor)
+                end = time.time()
+
+                if pos != -1:
+                    print(f"Valor encontrado en la posición {pos}")
+                else:
+                    print("Valor no encontrado")
+
+                print(f"Tiempo ejecución: {end - start:.6f} segundos")
+    
+                tiempos = []
+
+                # Mejor caso
+                start = time.time()
+                oper.sequentialSearch(arr, arr[0])
+                end = time.time()
+                tiempos.append(end - start)
+
+                # Promedio
+                start = time.time()
+                oper.sequentialSearch(arr, arr[n // 2])
+                end = time.time()
+                tiempos.append(end - start)
+
+                # Peor caso
+                start = time.time()
+                oper.sequentialSearch(arr, -1)
+                end = time.time()
+                tiempos.append(end - start)
+
+                print(f"\nmin  = {min(tiempos):.6f} s")
+                print(f"prom = {sum(tiempos)/len(tiempos):.6f} s")
+                print(f"max  = {max(tiempos):.6f} s")
+
+            case "4":
+                n = int(input("Ingrese n: "))
+                valor = int(input("Valor a buscar (entre 1 y n o fuera del rango para el peor caso): "))
+                arr = list(range(1, n + 1))
+
+                start = time.time()
+                pos = oper.binarySearch(arr, valor)
+                end = time.time()
+
+                if pos != -1:
+                    print(f"Valor encontrado en la posición {pos}")
+                else:
+                    print("Valor no encontrado")
+
+                print(f"Tiempo ejecución: {end - start:.6f} segundos")
+
+                # Comparación con mejor, promedio y peor caso
+                print("\n--- Comparación con otros casos ---")
+                tiempos = []
+
+                # Mejor caso: valor del medio
+                start = time.time()
+                oper.binarySearch(arr, arr[n // 2])
+                end = time.time()
+                print(f"Mejor caso (valor {arr[n // 2]}): {end - start:.6f} segundos")
+                tiempos.append(end - start)
+
+                # Promedio caso: valor cercano al inicio
+                start = time.time()
+                oper.binarySearch(arr, arr[n // 4])
+                end = time.time()
+                print(f"Promedio caso (valor {arr[n // 4]}): {end - start:.6f} segundos")
+                tiempos.append(end - start)
+
+                # Peor caso: valor que no existe
+                start = time.time()
+                oper.binarySearch(arr, -1)
+                end = time.time()
+                print(f"Peor caso (valor -1): {end - start:.6f} segundos")
+                tiempos.append(end - start)
+
+                print(f"\nOmín  = {min(tiempos):.6f} s")
+                print(f"Oprom = {sum(tiempos)/len(tiempos):.6f} s")
+                print(f"Omáx  = {max(tiempos):.6f} s")
+
+
+            case "s":
+                print("Programa finalizado")
+            case _:
+                print("Opción no válida")
+
+if __name__ == '__main__':
+    main_menu()
