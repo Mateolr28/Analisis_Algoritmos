@@ -114,6 +114,44 @@ def main_menu():
                 print(f"max  = {max(tiempos):.6f} s")
 
 
+            case "5":
+                n = int(input("Ingrese n: "))
+                base = list(range(n, 0, -1)) 
+                tiempos = []
+
+                # Burbuja
+                arr = base.copy()
+                start = time.time()
+                oper.bubbleSort(arr)
+                end = time.time()
+                t_burbuja = end - start
+                print(f"Burbuja: {t_burbuja:.6f} segundos")
+                tiempos.append(t_burbuja)
+
+                # Inserción
+                arr = base.copy()
+                start = time.time()
+                oper.insertionSort(arr)
+                end = time.time()
+                t_insercion = end - start
+                print(f"Inserción: {t_insercion:.6f} segundos")
+                tiempos.append(t_insercion)
+
+                # Selección
+                arr = base.copy()
+                start = time.time()
+                oper.selectionSort(arr)
+                end = time.time()
+                t_seleccion = end - start
+                print(f"Selección: {t_seleccion:.6f} segundos")
+                tiempos.append(t_seleccion)
+
+                print(f"\nmin  = {min(tiempos):.6f} s")
+                print(f"prom = {sum(tiempos)/len(tiempos):.6f} s")
+                print(f"max  = {max(tiempos):.6f} s")
+
+
+
             case "s":
                 print("Programa finalizado")
             case _:
