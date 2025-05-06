@@ -128,22 +128,22 @@ def main_menu():
                 print(f"Burbuja: {t_burbuja:.6f} segundos")
                 tiempos.append(t_burbuja)
 
-                # Inserción
+                # Insercion
                 arr = base.copy()
                 start = time.time()
                 oper.insertionSort(arr)
                 end = time.time()
                 t_insercion = end - start
-                print(f"Inserción: {t_insercion:.6f} segundos")
+                print(f"Insercion: {t_insercion:.6f} segundos")
                 tiempos.append(t_insercion)
 
-                # Selección
+                # Seleccion
                 arr = base.copy()
                 start = time.time()
                 oper.selectionSort(arr)
                 end = time.time()
                 t_seleccion = end - start
-                print(f"Selección: {t_seleccion:.6f} segundos")
+                print(f"Seleccion: {t_seleccion:.6f} segundos")
                 tiempos.append(t_seleccion)
 
                 print(f"\nmin  = {min(tiempos):.6f} s")
