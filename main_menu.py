@@ -1,6 +1,7 @@
 from os import system
 import time
 from operations import Operations
+import sys
 
 def main_menu():
     system('cls')  
@@ -72,6 +73,11 @@ def main_menu():
                 print(f"prom = {sum(tiempos)/len(tiempos):.6f} s")
                 print(f"max  = {max(tiempos):.6f} s")
 
+                # Medicion de memoria
+                memoria_total = sys.getsizeof(arr) + sum(sys.getsizeof(x) for x in arr)
+                memoria_mb = memoria_total / (1024 ** 2)
+                print(f"\nMemoria utilizada por el arreglo: {memoria_mb:.2f} MB")
+
             case "4":
                 n = int(input("Ingrese n: "))
                 valor = int(input("Valor a buscar: "))
@@ -113,6 +119,10 @@ def main_menu():
                 print(f"prom = {sum(tiempos)/len(tiempos):.6f} s")
                 print(f"max  = {max(tiempos):.6f} s")
 
+                 # Medicion de memoria
+                memoria_total = sys.getsizeof(arr) + sum(sys.getsizeof(x) for x in arr)
+                memoria_mb = memoria_total / (1024 ** 2)
+                print(f"\nMemoria utilizada por el arreglo: {memoria_mb:.2f} MB")
 
             case "5":
                 n = int(input("Ingrese n: "))
@@ -149,6 +159,11 @@ def main_menu():
                 print(f"\nmin  = {min(tiempos):.6f} s")
                 print(f"prom = {sum(tiempos)/len(tiempos):.6f} s")
                 print(f"max  = {max(tiempos):.6f} s")
+
+                # Medicion de memoria
+                memoria_total = sys.getsizeof(arr) + sum(sys.getsizeof(x) for x in arr)
+                memoria_mb = memoria_total / (1024 ** 2)
+                print(f"\nMemoria utilizada por el arreglo: {memoria_mb:.2f} MB")
 
 
 
